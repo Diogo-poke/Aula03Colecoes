@@ -12,3 +12,4 @@ D:\Diogo Alves 2DS\Aula03Colecoes\obj\Debug\net9.0\refint\Aula03Colecoes.dll
 D:\Diogo Alves 2DS\Aula03Colecoes\obj\Debug\net9.0\Aula03Colecoes.pdb
 D:\Diogo Alves 2DS\Aula03Colecoes\obj\Debug\net9.0\Aula03Colecoes.genruntimeconfig.cache
 D:\Diogo Alves 2DS\Aula03Colecoes\obj\Debug\net9.0\ref\Aula03Colecoes.dll
+D:\Diogo Alves 2DS\Aula03Colecoes\obj\Debug\net9.0\Aula03Colecoes.sourcelink.json

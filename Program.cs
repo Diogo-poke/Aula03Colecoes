@@ -11,8 +11,85 @@ namespace Aula03Colecoes
 
         static void Main(string[] args)
         {
-            
+            CriarLista();
+            ObterPorId();
+            AdicionarFuncionario();
+            ObterPorIdDigitado();
+             ObterPorSalario();
+           
         }
+
+        public static void ObterPorId()
+         {
+               lista = lista.FindAll(x => x.Id == 1);
+                ExibirLista();
+
+         }
+
+         public static void ObterPorIdDigitado()
+         {
+            Console.WriteLine("Digite o id: ");
+            int id = int.Parse(Console.ReadLine());
+            Funcionario fBusca = lista.Find(x => x.Id == id);
+          
+          if (fBusca == null)
+            Console.WriteLine("Não encontrado");
+            else
+            Console.WriteLine($"Funcionario encontrado: {fBusca.Nome}");
+         }
+
+         public static void ObterPorSalario()
+         {
+            Console.WriteLine("Digite o valor minimo: ");
+            decimal salario = decimal.Parse(Console.ReadLine());
+            lista = lista.FindAll(x => x.Salario >= salario);
+            ExibirLista();
+         }
+
+        public static void AdicionarFuncionario()
+        {
+            Funcionario f = new Funcionario();
+
+            Console.WriteLine("Digite o nome: ");
+            f.Nome = Console.ReadLine();
+
+            Console.WriteLine("Digite o salário: ");
+            f.Salario = decimal.Parse(Console.ReadLine());
+
+            Console.WriteLine("Digite a data de admissão: ");
+            f.DataAdmissao = DateTime.Parse(Console.ReadLine());
+
+            if(string.IsNullOrEmpty(f.Nome))
+            {
+                Console.WriteLine("O nome deve ser preenchido");
+                return;
+            } 
+            else if(f.Salario == 0)
+            {
+             Console.WriteLine("Valor do salario não pode ser 0");
+             return;
+            }
+            else 
+            {
+                lista.Add(f);
+                ExibirLista();
+            }
+        }
+        
+             // Atividade 1
+      public static void ObterPorNome()
+      {
+        
+      }
+
+      public static void ObterFuncionariosRecentes()
+      {
+        Funcionario fBusca = 
+        lista.Remove( x => x.Id <4);
+
+      }
+
+
           public static void ExibirLista()
           {
             string dados = "";
@@ -82,5 +159,6 @@ namespace Aula03Colecoes
             f6.Nome = "Roger Guedes";
             f6.Cpf = "246813579";
         }
+   
     }
 }
