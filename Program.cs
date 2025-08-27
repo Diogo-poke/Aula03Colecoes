@@ -76,18 +76,100 @@ namespace Aula03Colecoes
             }
         }
         
-             // Atividade 1
+                // Atividade 1
+
       public static void ObterPorNome()
       {
-        
+       
+    Console.WriteLine("Digite o nome do funcionário: ");
+    string nome = Console.ReadLine();
+
+    var funcionario = lista.FirstOrDefault(f => f.Nome.Equals(nome, StringComparison.OrdinalIgnoreCase));
+
+    if (funcionario != null)
+        Console.WriteLine($"Encontrado: {funcionario.Id} - {funcionario.Nome} - Salário: {funcionario.Salario}");
+    else
+        Console.WriteLine($"Funcionário '{nome}' não encontrado!");
+   
       }
 
       public static void ObterFuncionariosRecentes()
       {
-        Funcionario fBusca = 
-        lista.Remove( x => x.Id <4);
+         Funcionario f = new Funcionario();
+         lista.RemoveAll(f = f.Id < 4);
 
+      var listaOrdenada = lista.OrderByDescending(f => f.Salario).ToList();
+
+        ExibirLista(listaOrdenada);
       }
+
+      public static void ObterEstatisticas()
+        {
+        int quantidade = Funcionario.Count;
+
+         decimal somaSalarios = Funcionario.Sum(f => f.Salario);
+
+        Console.WriteLine($"Quantidade de funcionários: {quantidade}");
+        Console.WriteLine($"Somatório dos salários: {somaSalarios}");
+
+        }
+        public static void ValidarSalarioAdmissao()
+    {
+     if (f.Salario == 0)
+    {
+        Console.WriteLine(" O salário não pode ser 0.");
+        return false;
+    }
+
+    if (f.DataAdmissao < DateTime.Now.Date)
+    {
+        Console.WriteLine(" A data de admissão não pode ser anterior à data atual.");
+        return false;
+    }
+
+    return true; 
+ }
+        
+    public static bool ValidarNome(Funcionario f)
+{
+    if (string.IsNullOrEmpty(f.Nome) || f.Nome.Length < 2)
+    {
+        Console.WriteLine(" O nome deve ter pelo menos 2 caracteres.");
+        return false;
+    }
+    return true;
+}
+public static void ObterPorTipo()
+{
+    Console.WriteLine("Digite o tipo do funcionário (número): ");
+    foreach (var tipo in Enum.GetValues(typeof(TipoFuncionarioEnum)))
+    {
+        Console.WriteLine($"{(int)tipo} - {tipo}");
+    }
+
+    if (!int.TryParse(Console.ReadLine(), out int valor))
+    {
+        Console.WriteLine("Valor inválido. Digite um número.");
+        return;
+    }
+
+    var listaFiltrada = lista
+        .Where(f => (int)f.TipoFuncionario == valor)
+        .ToList();
+
+    if (listaFiltrada.Count == 0)
+    {
+        Console.WriteLine("Nenhum funcionário encontrado para esse tipo.");
+    }
+    else
+    {
+        Console.WriteLine("Funcionários encontrados:");
+        foreach (var f in listaFiltrada)
+        {
+            Console.WriteLine($"{f.Id} - {f.Nome} - {f.TipoFuncionario}");
+        }
+    }
+}
 
 
           public static void ExibirLista()
